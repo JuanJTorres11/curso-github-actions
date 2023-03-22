@@ -331,7 +331,7 @@ Los más usados son:
       if: ${{ github.ref == 'refs/heads/main' }}
       runs-on: ubuntu-latest
       steps:
-        - run: echo "Desplegando en la rama $GITHUB_REF"
+        - run: echo "Desplegando en la rama $GITHUB_REF en el repositorio ${{ github.repository  }}"
   ```
   </details>
 
@@ -379,9 +379,7 @@ El uso de variables de entorno es lo único que te falta por aprender de los pri
         SALUDO: Hola
       steps:
         - name: Saludar
-          run: echo "$SALUDO, $NOMBRE. Hoy es $DIA_DE_SEMANA!"
-          env:
-            NOMBRE: Juan
+          run: echo "$SALUDO, ${{ vars.NOMBRE }}. ¡Hoy es ${{ env.DIA_DE_SEMANA }}!"
   ```
   </details>
 
